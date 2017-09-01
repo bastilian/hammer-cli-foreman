@@ -51,4 +51,5 @@ module HammerCLIForeman
 
       build_options
     end
+  end
 end
