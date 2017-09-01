@@ -107,7 +107,7 @@ module HammerCLIForeman
       'HammerCLIForeman::SmartClassParameter', 'hammer_cli_foreman/smart_class_parameter'
     )
 
-    HammerCLI::MainCommand.lazy_subcommand('ssh-keys', _("Manipulate smart class parameters."),
+    HammerCLI::MainCommand.lazy_subcommand('ssh-keys', _("Managing User SSH Keys."),
       'HammerCLIForeman::SSHKeys', 'hammer_cli_foreman/ssh_keys'
     )
 
@@ -154,4 +154,3 @@ module HammerCLIForeman
   end
 
 end
-
