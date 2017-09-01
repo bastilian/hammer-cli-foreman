@@ -51,16 +51,4 @@ module HammerCLIForeman
 
       build_options
     end
-
-    class UpdateCommand < HammerCLIForeman::UpdateCommand
-      include SSHKeyCommons
-
-      success_message _("SSH Key [%{name}] updated")
-      failure_message _("Could not update the SSH Key")
-
-      build_options
-
-    end
-    autoload_subcommands
-  end
 end

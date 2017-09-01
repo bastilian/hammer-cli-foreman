@@ -43,12 +43,4 @@ describe HammerCLIForeman::SSHKeys do
       it_should_accept "id", ["--id=1"]
     end
   end
-
-  context "UpdateCommand" do
-    let(:cmd) { HammerCLIForeman::SSHKeys::UpdateCommand.new("", ctx) }
-
-    context "parameters" do
-      it_should_accept "id", "--id=1"
-    end
-  end
 end
