@@ -49,6 +49,20 @@ describe 'ssh_keys' do
       result = run_cmd(cmd + params)
       assert_cmd(expected_result, result)
     end
+
+    it 'adds an ssh-key to a given user with a key-file' do
+      params = ['--user-id', user[:id],
+                '--key-file', '~/.ssh/id_rsa.pub',
+                '--name', ssh_key[:name]]
+      File.stubs(:read).returns(ssh_key[:key])
+      api_expects(:ssh_keys, :create, :user_id => user[:id])
+        .returns(ssh_key)
+
+      expected_result = success_result("SSH Key #{ssh_key[:name]} added\n")
+
+      result = run_cmd(cmd + params)
+      assert_cmd(expected_result, result)
+    end
   end
 
   describe 'delete' do

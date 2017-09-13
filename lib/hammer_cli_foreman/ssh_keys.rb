@@ -19,6 +19,10 @@ module HammerCLIForeman
     class CreateCommand < HammerCLIForeman::CreateCommand
       command_name "add"
 
+      option "--key-file", "KEY", _("Path to a SSH public key"),
+             :attribute_name => :option_key,
+             :format => HammerCLI::Options::Normalizers::File.new
+
       success_message _("SSH Key %{name} added")
       failure_message _("Could not add SSH Key")
 
