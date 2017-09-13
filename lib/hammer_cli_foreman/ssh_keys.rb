@@ -1,24 +1,10 @@
 module HammerCLIForeman
-  module SSHKeyCommons
-    def self.included(base)
-      base.option "--user_id", "USER_ID", _("ID of the user to add the SSH Key to")
-    end
-
-    def request_params
-      params = super
-      params["user_id"] = option_user_id
-      params
-    end
-  end
-
   class SSHKeys < HammerCLIForeman::Command
     resource :ssh_keys
     command_name "ssh-keys"
     desc _("Manage SSH Keys sources.")
 
     class ListCommand < HammerCLIForeman::ListCommand
-      include SSHKeyCommons
-
       output do
         field :id, _("Id")
         field :name, _("Name")
@@ -31,22 +17,16 @@ module HammerCLIForeman
     end
 
     class CreateCommand < HammerCLIForeman::CreateCommand
-      include SSHKeyCommons
+      command_name "add"
 
-      def self.command_name
-        "add"
-      end
-
-      success_message _("SSH Key [%{name}] added")
+      success_message _("SSH Key %{name} added")
       failure_message _("Could not add SSH Key")
 
       build_options
     end
 
     class DeleteCommand < HammerCLIForeman::DeleteCommand
-      include SSHKeyCommons
-
-      success_message _("SSH Key [%{name}] deleted")
+      success_message _("SSH Key deleted")
       failure_message _("Could not delete the SSH Key")
 
       build_options
