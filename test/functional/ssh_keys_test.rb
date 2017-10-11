@@ -72,7 +72,7 @@ describe 'ssh_keys' do
   end
 
   describe 'info' do
-    let(:cmd) { base_cmd << 'show' }
+    let(:cmd) { base_cmd << 'info' }
 
     it 'shows the public key' do
       params = ['--id', ssh_key[:id],

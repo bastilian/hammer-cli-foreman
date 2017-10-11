@@ -37,8 +37,6 @@ module HammerCLIForeman
     end
 
     class InfoCommand < HammerCLIForeman::InfoCommand
-      command_name 'show'
-
       output ListCommand.output_definition do
         field :key, _("Public Key")
       end
